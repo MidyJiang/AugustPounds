@@ -1,8 +1,5 @@
 requests
 datetime
 pandas
-smtplib
-matplotlib
-urllib
-BeautifulSoup
+
 
