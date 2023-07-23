@@ -20,8 +20,8 @@ jobs:
       with:
         python-version: '3.7'  # 更改为你想要使用的Python版本
 
-    # - name: Install dependencies
-    #   run: pip install -r requirements.txt  # 如果存在依赖，请在此处安装依赖
+    - name: Install dependencies
+      run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
         
     - name: Execute Python script
       run: python Consistent.py  # 替换为你的Python文件名称
