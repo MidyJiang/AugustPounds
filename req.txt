@@ -1,0 +1,9 @@
+requests
+os
+datetime
+pandas
+smtplib
+matplotlib
+urllib
+BeautifulSoup
+
