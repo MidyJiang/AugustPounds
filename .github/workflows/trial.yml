@@ -1,0 +1,27 @@
+name: Python Workflow
+
+on:
+  push:
+    branches:
+      - main  # 更改为你的默认分支名称
+  schedule:
+    - cron: '0 0 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'  # 更改为你想要使用的Python版本
+
+    # - name: Install dependencies
+    #   run: pip install -r requirements.txt  # 如果存在依赖，请在此处安装依赖
+        
+    - name: Execute Python script
+      run: python consistent.py  # 替换为你的Python文件名称
