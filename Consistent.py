@@ -143,7 +143,7 @@ while True:
         df.to_csv(r'data_boc\{}.csv'.format(sendtime))
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《local中行{}min日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
         except Exception as E:
             print(E)
         continue;  
