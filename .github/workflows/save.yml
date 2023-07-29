@@ -1,11 +1,11 @@
-name: Python Workflow
+name: save to architect
 
 on:
   push:
     branches:
       - main  # 更改为你的默认分支名称
-  schedule:
-    - cron: '0 0 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
+#   schedule:
+#     - cron: '0 0 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
 
 jobs:
   build:
@@ -37,14 +37,11 @@ jobs:
     - name: Save File as Artifact
       run: |
         # 假设你想保存的文件是 output.txt
-        cp output.txt ${{ github.workspace }}/output.txt
+        cp data_boc/send.csv ${{ github.workspace }}/send.csv
 
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: My Artifact
-        path: ${{ github.workspace }}/output.txt
-        
-      
-      
+        path: ${{ github.workspace }}/send.csv
