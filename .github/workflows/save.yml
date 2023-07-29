@@ -1,0 +1,50 @@
+name: Python Workflow
+
+on:
+  push:
+    branches:
+      - main  # 更改为你的默认分支名称
+  schedule:
+    - cron: '0 0 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # 更改为你想要使用的Python版本
+
+
+    - name: Update pip
+      run: python -m pip install --upgrade pip
+      
+      
+    - name: Install dependencies
+      run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
+        
+    - name: Execute Python script
+      run: python Consistent.py  # 替换为你的Python文件名称
+      
+      
+      
+      ###############################################################
+    - name: Save File as Artifact
+      run: |
+        # 假设你想保存的文件是 output.txt
+        cp output.txt ${{ github.workspace }}/output.txt
+
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: My Artifact
+        path: ${{ github.workspace }}/output.txt
+        
+      
+      
