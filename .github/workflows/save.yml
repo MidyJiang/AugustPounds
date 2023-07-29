@@ -29,7 +29,7 @@ jobs:
       run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
         
     - name: Execute Python script
-      run: python Consistent.py  # 替换为你的Python文件名称
+      run: python writefile.py  # 替换为你的Python文件名称
       
       
       
