@@ -1,9 +1,9 @@
 name: Python Workflow
 
 on:
-  push:
-    branches:
-      - main  # 更改为你的默认分支名称
+#   push:
+#     branches:
+#       - main  # 更改为你的默认分支名称
   schedule:
     - cron: '1 4,10,16,22 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
 
