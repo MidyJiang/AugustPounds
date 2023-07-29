@@ -56,8 +56,8 @@ def sendmail(receive_mail,title=None):
     attchment = MIMEApplication(open(r'data_boc\{}.png'.format(sendtime),'rb').read()) # 文件
     attchment.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.png'.format(sendtime))
     msg.attach(attchment)  # 添加附件到邮件
-    attchment2 = MIMEApplication(open(r'data_boc\{}.csv'.format(sendtime),'rb').read()) # 文件
-    attchment2.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.csv'.format(sendtime))
+    attchment2 = MIMEApplication(open(r'data_boc\{}.csv'.format('SEND'),'rb').read()) # 文件
+    attchment2.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.csv'.format('SEND'))
     msg.attach(attchment2)  # 添加附件到邮件
     
     f = open(r'data_boc\{}.png'.format(sendtime), 'rb')  #打开图片
@@ -140,7 +140,7 @@ while True:
         plt.title('Trend_GBP')
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format(sendtime))    
-        df.to_csv(r'data_boc\{}.csv'.format(sendtime))
+        df.to_csv(r'data_boc\{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
@@ -169,7 +169,7 @@ while True:
         plt.title('Trend_GBP')
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format(sendtime))    
-        df.to_csv(r'data_boc\{}.csv'.format(sendtime))
+        df.to_csv(r'data_boc\{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《中行{}min记录日志_{}》".format(freq,price)+time.ctime())
