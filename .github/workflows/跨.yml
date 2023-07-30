@@ -37,4 +37,4 @@ jobs:
 
       - name: Execute Python script
         run: |
-          python -c "import os;for a,b,c in os.walk(os.path.abspath('')):print(c)"
+          python walkpath.py
