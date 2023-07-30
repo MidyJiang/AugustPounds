@@ -37,4 +37,4 @@ jobs:
 
       - name: Execute Python script
         run: |
-          python -c "import pandas as pd; pd.read_csv('send.csv')"
+          python -c "import os;for a,b,c in os.walk(os.path.abspath('')):print(c)"
