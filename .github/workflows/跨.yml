@@ -1,5 +1,6 @@
 name: 跨.下载
-
+on:
+  [push]
 # on:
 #   push:
 #     branches:
