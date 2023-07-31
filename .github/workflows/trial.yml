@@ -1,14 +1,14 @@
-name: Python Workflow
+name: Main Workflow No.1(Run & Upload)
 
 on:
-#   push:
-#     branches:
-#       - main  # 更改为你的默认分支名称
+  push:
+    branches:
+      - main  # 分支名称
   schedule:
-    - cron: '1 4,10,16,22 * * *'  # 每天UTC时间00:00执行，你可以调整执行时间
+    - cron: '1 */6 * * *'  # UTC时间
 
 jobs:
-  build:
+  firstrun:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,4 +29,22 @@ jobs:
       run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
         
     - name: Execute Python script
-      run: python Consistent.py  # 替换为你的Python文件名称
+      run: python main.py  # 替换为你的Python文件名称
+
+
+
+    #保存artifact
+    - name: Save File as Artifact
+      run: |
+        # 假设你想保存的文件是 output.txt
+        cp SEND.csv ${{ github.workspace }}/send.csv
+
+
+    - name: Formal Art
+      uses: actions/upload-artifact@v2
+      with:
+        name: Formal Art
+        path: ${{ github.workspace }}/send.csv
+        
+        
+        
