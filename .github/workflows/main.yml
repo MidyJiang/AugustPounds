@@ -37,7 +37,7 @@ jobs:
     - name: Save File as Artifact
       run: |
         # 假设你想保存的文件是 output.txt
-        cp data_boc/SEND.csv ${{ github.workspace }}/send.csv
+        cp SEND.csv ${{ github.workspace }}/send.csv
 
 
     - name: Formal Art
