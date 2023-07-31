@@ -1,6 +1,11 @@
 name: 跨.下载
+
 on:
-  [push]
+  push:
+    branches-ignore:
+      - main
+
+
 # on:
 #   push:
 #     branches:
