@@ -31,7 +31,8 @@ jobs:
 
     
     - name: Save File as Artifact   #保存artifact
-      run:  cp SEND.csv ${{ github.workspace }}/send.csv# 假设你想保存的文件是 output.txt
+      run:  cp SEND.csv ${{ github.workspace }}/send.csv
+    
     - name: Formal Art
       uses: actions/upload-artifact@v2
       with:
@@ -40,6 +41,7 @@ jobs:
         
         
   secondrun:
+    needs: firstrun
     runs-on: ubuntu-latest
     
     steps:
