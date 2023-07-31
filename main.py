@@ -1,4 +1,4 @@
-freq=10#30分钟发一次邮件汇报
+freq=4 #30分钟发一次邮件汇报
 limit=105000780#最大300条数据，停止，发送邮件汇报
 mailflag=True
 latest_price=0
@@ -86,7 +86,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 count=0
 timelist=[]
 
-while time.time()-start < 60*15: # 20000:
+while time.time()-start < 60*19: # 20000:
     count+=1
     try:
         time.sleep(4)
