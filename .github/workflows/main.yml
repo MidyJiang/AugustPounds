@@ -20,10 +20,8 @@ jobs:
       with:
         python-version: '3.8'  # 更改为你想要使用的Python版本
 
-
     - name: Update pip
       run: python -m pip install --upgrade pip
-      
       
     - name: Install dependencies
       run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
@@ -31,15 +29,9 @@ jobs:
     - name: Execute Python script
       run: python main.py  # 替换为你的Python文件名称
 
-
-
-    #保存artifact
-    - name: Save File as Artifact
-      run: |
-        # 假设你想保存的文件是 output.txt
-        cp SEND.csv ${{ github.workspace }}/send.csv
-
-
+    
+    - name: Save File as Artifact   #保存artifact
+      run:  cp SEND.csv ${{ github.workspace }}/send.csv# 假设你想保存的文件是 output.txt
     - name: Formal Art
       uses: actions/upload-artifact@v2
       with:
@@ -47,4 +39,33 @@ jobs:
         path: ${{ github.workspace }}/send.csv
         
         
+  secondrun:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
         
+      - name: Download Artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: main.yml
+
+
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # 更改为你想要使用的Python版本
+
+
+      - name: Update pip
+        run: python -m pip install --upgrade pip
+
+
+      - name: Install dependencies
+        run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
+
+      - name: Execute Python script
+        run:           python main.py      
