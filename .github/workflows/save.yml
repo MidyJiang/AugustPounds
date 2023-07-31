@@ -1,9 +1,12 @@
 name: save to architect
 
-
-
 on:
-  [push]
+  push:
+    branches-ignore:
+      - main
+
+
+
 # on:
 #   push:
 #     branches:
