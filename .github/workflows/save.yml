@@ -1,7 +1,11 @@
 name: save to architect
 
+
+
 on:
-  push:
+  [push]
+# on:
+#   push:
 #     branches:
 #       - main  # 更改为你的默认分支名称
 #   schedule:
