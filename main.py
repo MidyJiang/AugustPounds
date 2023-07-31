@@ -58,8 +58,8 @@ def sendmail(receive_mail,title=None,sendtime=None):
     attchment = MIMEApplication(open(r'data_boc\{}.png'.format(sendtime),'rb').read()) # 文件
     attchment.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.png'.format(sendtime))
     msg.attach(attchment)  # 添加附件到邮件
-    attchment2 = MIMEApplication(open(r'data_boc\{}.csv'.format('SEND'),'rb').read()) # 文件
-    attchment2.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.csv'.format('SEND'))
+    attchment2 = MIMEApplication(open(r'{}.csv'.format('SEND'),'rb').read()) # 文件
+    attchment2.add_header('Content-Disposition','attachment',filename=r'{}.csv'.format('SEND'))
     msg.attach(attchment2)  # 添加附件到邮件
     
     f = open(r'data_boc\{}.png'.format(sendtime), 'rb')  #打开图片
@@ -86,7 +86,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 count=0
 timelist=[]
 
-while time.time()-start < 60*30: # 20000:
+while time.time()-start < 60*15: # 20000:
     count+=1
     try:
         time.sleep(4)
@@ -143,10 +143,10 @@ while time.time()-start < 60*30: # 20000:
         plt.grid()
     
         plt.xlabel("Issueing Date")
-        plt.title( '{}最低点{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format(sendtime))    
-        df.to_csv(r'data_boc\{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《GBP涨价提醒_{}》".format(price)+time.ctime(),sendtime=sendtime)
@@ -180,10 +180,10 @@ while time.time()-start < 60*30: # 20000:
 #                  '{}lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
         plt.xlabel("Issueing Date")
-        plt.title( '{}最低点{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format(sendtime))    
-        df.to_csv(r'data_boc\{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Local中行{}min日志_{}》".format(freq,price)+time.ctime())
@@ -211,10 +211,10 @@ while time.time()-start < 60*30: # 20000:
 #                  '{}最低点{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
         plt.xlabel("Issueing Date")
-        plt.title( '{}最低点{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format(sendtime))    
-        df.to_csv(r'data_boc\{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Local中行{}min记录日志_{}》".format(freq,price)+time.ctime())
