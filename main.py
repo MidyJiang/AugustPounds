@@ -86,7 +86,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 count=0
 timelist=[]
 
-while time.time()-start < 60*19: # 20000:
+while time.time()-start <  20000 :
     count+=1
     try:
         time.sleep(4)
@@ -158,9 +158,9 @@ while time.time()-start < 60*19: # 20000:
         rise_warning(df)
     elif price<latest_price:
         latest_price=price
-    elif price==latest_price:
-        continue;
-    # continue;
+    # elif price==latest_price:
+    #     continue;
+    # # continue;
         
 
     if int(time.ctime()[14:16])%freq==1 and not mailflag:mailflag=True
