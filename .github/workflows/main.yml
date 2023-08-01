@@ -5,7 +5,7 @@ on:
     branches:
       - main  # 分支名称
   schedule:
-    - cron: '1 */6 * * *'  # UTC时间
+    - cron: '1 */98228 * * *'  # UTC时间
 
 jobs:
 #   firstrun:
@@ -72,3 +72,13 @@ jobs:
 
       - name: Execute Python script
         run:           python main.py      
+
+      - name: Save File as Artifact   #保存artifact
+        run:  cp SEND.csv ${{ github.workspace }}/send.csv
+
+      - name: Formal Art
+        uses: actions/upload-artifact@v2
+        with:
+          name: Formal Art
+          path: ${{ github.workspace }}/send.csv
+
