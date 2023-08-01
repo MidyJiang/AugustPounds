@@ -55,14 +55,14 @@ def sendmail(receive_mail,title=None,sendtime=None):
     msg['To'] = Header('midy','utf8') # 收件人--这里是昵称
     
     # msg.attach(MIMEText(content,'html','utf-8'))  # 构建邮件正文,不能多次构造
-    attchment = MIMEApplication(open(r'data_boc\{}.png'.format(sendtime),'rb').read()) # 文件
-    attchment.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.png'.format(sendtime))
+    attchment = MIMEApplication(open(r'data_boc\{}.png'.format("SEND"),'rb').read()) # 文件
+    attchment.add_header('Content-Disposition','attachment',filename=r'data_boc\{}.png'.format("SEND"))
     msg.attach(attchment)  # 添加附件到邮件
     attchment2 = MIMEApplication(open(r'{}.csv'.format('SEND'),'rb').read()) # 文件
     attchment2.add_header('Content-Disposition','attachment',filename=r'{}.csv'.format('SEND'))
     msg.attach(attchment2)  # 添加附件到邮件
     
-    f = open(r'data_boc\{}.png'.format(sendtime), 'rb')  #打开图片
+    f = open(r'data_boc\{}.png'.format("SEND"), 'rb')  #打开图片
     msgimage = MIMEImage(f.read())
     f.close()
     msgimage.add_header('Content-ID', '<image1>')  # 设置图片
@@ -86,7 +86,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 count=0
 timelist=[]
 
-while time.time()-start <  20000 :
+while time.time()-start < 20000 :
     count+=1
     try:
         time.sleep(4)
@@ -145,7 +145,7 @@ while time.time()-start <  20000 :
         plt.xlabel("Issueing Date")
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
-        plt.savefig(r'data_boc\{}.png'.format(sendtime))    
+        plt.savefig(r'data_boc\{}.png'.format("SEND"))    
         df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
@@ -182,7 +182,7 @@ while time.time()-start <  20000 :
         plt.xlabel("Issueing Date")
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
-        plt.savefig(r'data_boc\{}.png'.format(sendtime))    
+        plt.savefig(r'data_boc\{}.png'.format("SEND"))    
         df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
@@ -213,7 +213,7 @@ while time.time()-start <  20000 :
         plt.xlabel("Issueing Date")
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
-        plt.savefig(r'data_boc\{}.png'.format(sendtime))    
+        plt.savefig(r'data_boc\{}.png'.format("SEND"))    
         df.to_csv(r'{}.csv'.format('SEND'))
         try:
             for receive_mail in receive_list:
@@ -222,3 +222,6 @@ while time.time()-start <  20000 :
         
         break;
     else:continue;
+
+sendmail("782568799@qq.com","《终止提醒》")
+print("while结束（20000秒），自动终止。")
