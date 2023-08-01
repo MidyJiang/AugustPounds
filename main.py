@@ -27,7 +27,12 @@ plt.rcParams["axes.unicode_minus"]=False #该语句解决图像中的“-”负�
 url=r'https://www.boc.cn/sourcedb/whpj/'
 
 
-################################################################
+###############################
+try:
+    df=pd.read_csv(r'Formal Art/send.csv')
+except:
+    pass
+#################################
 
 from smtplib import SMTP_SSL
 from email.header import Header
