@@ -11,5 +11,5 @@ list_files(os.path.abspath(""))
 
 
 import pandas as pd
-df=pd.read_csv(r"My Artifact/send.csv")
+df=pd.read_csv(r"Formal Art/send.csv")
 print(df)
