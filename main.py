@@ -1,4 +1,4 @@
-freq=4 #30分钟发一次邮件汇报
+freq=32 #30分钟发一次邮件汇报
 limit=105000780#最大300条数据，停止，发送邮件汇报
 mailflag=True
 latest_price=0
