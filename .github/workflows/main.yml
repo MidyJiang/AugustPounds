@@ -70,7 +70,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r req.txt  # 如果存在依赖，请在此处安装依赖
 
-      - name: Execute Python script
+      - name: Execute walkpath
+        run:  python walkpath.py 
+        
+      - name: Execute main.py Script
         run:           python main.py      
 
       - name: Save File as Artifact   #保存artifact
