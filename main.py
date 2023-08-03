@@ -1,4 +1,4 @@
-freq=32 #30分钟发一次邮件汇报
+freq=30 #30分钟发一次邮件汇报
 limit=105000780#最大300条数据，停止，发送邮件汇报
 mailflag=True
 latest_price=0
@@ -20,8 +20,6 @@ start=time.time()
 warnings.filterwarnings('ignore')
 
 
-# plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
-# plt.rcParams["axes.unicode_minus"]=False #该语句解决图像中的“-”负号的乱码问题
 
 
 url=r'https://www.boc.cn/sourcedb/whpj/'
@@ -41,8 +39,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from email.mime.image import MIMEImage
 import time
-plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
-plt.rcParams['axes.unicode_minus']=False #用来正常显示负号 #有中文出现的情况，需要u'内容'
+
 
 def sendmail(receive_mail,title=None,sendtime=None):
     send_usr = '782568799@qq.com'  # 发件人
