@@ -5,7 +5,7 @@ on:
     branches:
       - main  # 分支名称
   schedule:
-    - cron: '1 */5 * * *'  # UTC时间
+    - cron: '1 */6 * * 1,2,3,4,5'  # UTC时间
 
 jobs:
 #   firstrun:
