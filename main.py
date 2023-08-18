@@ -3,7 +3,7 @@ limit=105000780#最大300条数据，停止，发送邮件汇报
 mailflag=True
 latest_price=0
 
-receive_list=['782568799@qq.com']
+receive_list=['782568799@qq.com','2397462028@qq.com']
 import time,random
 import requests,os,datetime
 import pandas as pd
