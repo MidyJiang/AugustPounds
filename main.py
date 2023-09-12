@@ -148,7 +148,7 @@ while time.time()-start < 20000 :
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'),index=False)
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《GBP涨价提醒_{}》".format(price)+time.ctime(),sendtime=sendtime)
@@ -185,7 +185,7 @@ while time.time()-start < 20000 :
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'),index=False)
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Local中行{}min日志_{}》".format(freq,price)+time.ctime())
@@ -216,7 +216,7 @@ while time.time()-start < 20000 :
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'))
+        df.to_csv(r'{}.csv'.format('SEND'),index=False)
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Local中行{}min记录日志_{}》".format(freq,price)+time.ctime())
