@@ -188,7 +188,7 @@ while time.time()-start < 20000 :
         df.to_csv(r'{}.csv'.format('SEND'),index=False)
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《Local中行{}min日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
         except Exception as E:
             print(188,E)
         continue;  
@@ -219,7 +219,7 @@ while time.time()-start < 20000 :
         df.to_csv(r'{}.csv'.format('SEND'),index=False)
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《Local中行{}min记录日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min记录日志_{}》".format(freq,price)+time.ctime())
         except:pass;
         
         break;
