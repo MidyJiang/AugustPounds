@@ -73,8 +73,8 @@ jobs:
       - name: Execute walkpath
         run:  python walkpath.py 
         
-      - name: Execute sub.py Script
-        run:           python sub.py      
+      - name: Execute main.py Script
+        run:           python main.py      
 
       - name: Save File as Artifact   #保存artifact
         run:  cp SEND.csv ${{ github.workspace }}/send.csv
