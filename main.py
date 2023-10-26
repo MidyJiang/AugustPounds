@@ -27,7 +27,7 @@ url=r'https://www.boc.cn/sourcedb/whpj/'
 
 ###############################
 try:
-    df=pd.read_csv(r'Formal Art/send.csv')
+    df=pd.read_csv(r'Formal Art/send.csv',encoding='utf16')
 except:
     pass
 #################################
