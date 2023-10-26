@@ -53,7 +53,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 
     msg = MIMEMultipart() # 构建主体
     msg['Subject'] = Header(title,'utf8')  # 邮件主题
-    msg['From'] = send_usr  # 发件人
+    msg['From'] = "ForeX_Git" #send_usr  # 发件人
     msg['To'] = Header('midy','utf8') # 收件人--这里是昵称
     
     # msg.attach(MIMEText(content,'html','utf-8'))  # 构建邮件正文,不能多次构造
@@ -147,11 +147,12 @@ while time.time()-start < 20000 :
         plt.xlabel("Issueing Date")
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
-        plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'),index=False)
+        plt.savefig(r'data_boc\{}.png'.format("SEND")) 
+        df=df.dropna(axis=1)   
+        df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《GBP涨价提醒_{}》".format(price)+time.ctime(),sendtime=sendtime)
+                sendmail(receive_mail,"《GBP rised_{}》".format(price)+time.ctime(),sendtime=sendtime)
         except Exception as E:
             print(152,E)
        #######################################################
@@ -184,8 +185,9 @@ while time.time()-start < 20000 :
         plt.xlabel("Issueing Date")
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
-        plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'),index=False)
+        plt.savefig(r'data_boc\{}.png'.format("SEND"))  
+        df=df.dropna(axis=1)
+        df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
                 sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
@@ -216,10 +218,11 @@ while time.time()-start < 20000 :
         plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=time.ctime().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))    
-        df.to_csv(r'{}.csv'.format('SEND'),index=False)
+        df=df.dropna(axis=1)
+        df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《Github中行{}min记录日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
         except:pass;
         
         break;
