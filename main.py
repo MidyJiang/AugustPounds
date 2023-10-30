@@ -116,7 +116,7 @@ while time.time()-start < 20000 :
 
 #         print(time.ctime()[14:16],end='分.')
         
-    except TypeError as E:
+    except Exception as E:
         print(134,E)
         pass;
     
