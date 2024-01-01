@@ -2,7 +2,7 @@ freq=59 #30分钟发一次邮件汇报
 limit=1050007880#最大300条数据，停止，发送邮件汇报
 mailflag=True
 latest_price=0
-
+yyear=2024
 receive_list=['782568799@qq.com','2397462028@qq.com']
 import time,random
 import requests,os,datetime
