@@ -3,7 +3,7 @@ name: Main Workflow No.1(Run & Upload)
 on:
   push:
     branches:
-      - main  # 分支名称
+      - main  # 分支 名称
   schedule:
     - cron: '1 */6 * * 1,2,3,4,5'  # UTC时间
 
