@@ -53,7 +53,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
 
     msg = MIMEMultipart() # 构建主体
     msg['Subject'] = Header(title,'utf8')  # 邮件主题
-    msg['From'] = "ForeX_Git" #send_usr  # 发件人
+    msg['From'] = "ForeX_Git <782568799@qq.com>" #send_usr  # 发件人
     msg['To'] = Header('midy','utf8') # 收件人--这里是昵称
     
     # msg.attach(MIMEText(content,'html','utf-8'))  # 构建邮件正文,不能多次构造
