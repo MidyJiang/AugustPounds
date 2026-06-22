@@ -43,7 +43,7 @@ import time
 
 def sendmail(receive_mail,title=None,sendtime=None):
     send_usr = '782568799@qq.com'  # 发件人
-    send_pwd ='svkjzmjipaczbehc'#'pdnfrwfijoewbeff'#'BUQRRQFPUANBCWMY' # 授权码，邮箱设置
+    send_pwd =r"pwogffqqirxabfaf"#'svkjzmjipaczbehc'#'pdnfrwfijoewbeff'#'BUQRRQFPUANBCWMY' # 授权码，邮箱设置
     receive = receive_mail#'782568799@qq.com'  # 接收者
     content = '发送于{}<p><a href="{}">GBPCNY-中国银行现价动态</a></p>'.format(time.ctime(),url)
     #content 内容设置
