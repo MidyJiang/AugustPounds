@@ -9,7 +9,7 @@ on:
 
 jobs:
 #   firstrun:
-#     runs-on: ubuntu-latest
+#     runs-on: ubuntu-20.04
     
 #     steps:
 #     - name: Checkout repository
@@ -42,7 +42,7 @@ jobs:
         
   secondrun:
 #     needs: firstrun
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     
     steps:
       - name: Checkout code
