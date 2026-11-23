@@ -17,6 +17,11 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 start=time.time()
+
+
+def beijing_time():
+    """Human-readable China Standard Time; never modifies CSV timestamps."""
+    return datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S (UTC+8)')
 warnings.filterwarnings('ignore')
 
 
@@ -45,7 +50,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
     send_usr = '782568799@qq.com'  # 发件人
     send_pwd ='svkjzmjipaczbehc'#'pdnfrwfijoewbeff'#'BUQRRQFPUANBCWMY' # 授权码，邮箱设置
     receive = receive_mail#'782568799@qq.com'  # 接收者
-    content = '发送于{}<p><a href="{}">GBPCNY-中国银行现价动态</a></p>'.format(time.ctime(),url)
+    content = '发送于{}<p><a href="{}">GBPCNY-中国银行现价动态</a></p>'.format(beijing_time(),url)
     #content 内容设置
     html_img = f'<p>{content}<br><img src="cid:image1"></br></p>' # html格式添加图片
     email_server = 'smtp.qq.com'
@@ -76,7 +81,7 @@ def sendmail(receive_mail,title=None,sendtime=None):
         smtp.login(send_usr,send_pwd)  # 登录邮箱
         smtp.sendmail(send_usr,receive,msg.as_string())  # 分别是发件人、收件人、格式
         smtp.quit()  # 结束服务
-        print(receive_mail,'邮件发送成功,mailflag已经改成False!',time.ctime())
+        print(receive_mail,'邮件发送成功,mailflag已经改成False!',beijing_time())
         global mailflag
         mailflag=False
     except Exception as E:
@@ -137,22 +142,22 @@ while time.time()-start < 20000 :
         plt.scatter(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),
                    color='r',marker='p')
-        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
+        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0], '(UTC+8)', pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
         plt.xticks(rotation=30)
 #         plt.text(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
 #                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0])*.99985, 
 #                  '{}lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
     
-        plt.xlabel("Issueing Date")
-        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
-        sendtime=time.ctime().replace(":","_")
+        plt.xlabel("发布日期 (UTC+8)")
+        plt.title( '{}Lowest{} (UTC+8)'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        sendtime=beijing_time().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))   
         df=df.dropna(axis=1) 
         df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《GBP涨价提醒_{}》".format(price)+time.ctime(),sendtime=sendtime)
+                sendmail(receive_mail,"《GBP涨价提醒_{}》".format(price)+beijing_time(),sendtime=sendtime)
         except Exception as E:
             print(152,E)
        #######################################################
@@ -176,21 +181,21 @@ while time.time()-start < 20000 :
         plt.scatter(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),
                    color='r',marker='p')
-        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
+        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0], '(UTC+8)', pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
         plt.xticks(rotation=30)
 #         plt.text(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
 #                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0])*.99985, 
 #                  '{}lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
-        plt.xlabel("Issueing Date")
-        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
-        sendtime=time.ctime().replace(":","_")
+        plt.xlabel("发布日期 (UTC+8)")
+        plt.title( '{}Lowest{} (UTC+8)'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        sendtime=beijing_time().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND"))   
         df=df.dropna(axis=1) 
         df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min日志_{}》".format(freq,price)+beijing_time())
         except Exception as E:
             print(188,E)
         continue;  
@@ -208,21 +213,21 @@ while time.time()-start < 20000 :
         plt.scatter(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),
                    color='r',marker='p')
-        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
+        print(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0], '(UTC+8)', pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]))
         plt.xticks(rotation=30)
 #         plt.text(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0],
 #                     pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0])*.99985, 
 #                  '{}最低点{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
-        plt.xlabel("Issueing Date")
-        plt.title( '{}Lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
-        sendtime=time.ctime().replace(":","_")
+        plt.xlabel("发布日期 (UTC+8)")
+        plt.title( '{}Lowest{} (UTC+8)'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
+        sendtime=beijing_time().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND")) 
         df=df.dropna(axis=1)  
         df.to_csv(r'{}.csv'.format('SEND'),index=False,encoding="utf16")
         try:
             for receive_mail in receive_list:
-                sendmail(receive_mail,"《Github中行{}min记录日志_{}》".format(freq,price)+time.ctime())
+                sendmail(receive_mail,"《Github中行{}min记录日志_{}》".format(freq,price)+beijing_time())
         except:pass;
         
         break;
