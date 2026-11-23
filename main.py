@@ -149,7 +149,7 @@ while time.time()-start < 20000 :
 #                  '{}lowest{}'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]), ha='center')
         plt.grid()
     
-        plt.xlabel("发布日期 (UTC+8)")
+        plt.xlabel("China Time (UTC+8)")
         plt.title( '{}Lowest{} (UTC+8)'.format(pd.to_numeric(df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].values[0]),df1[df1['现汇卖出价']==df1['现汇卖出价'].min()]['现汇卖出价'].index[0]))
         sendtime=beijing_time().replace(":","_")
         plt.savefig(r'data_boc\{}.png'.format("SEND")) 
