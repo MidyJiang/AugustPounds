@@ -9,6 +9,7 @@ import requests,os,datetime
 import pandas as pd
 import smtplib
 import warnings
+import os
 import matplotlib.pyplot as plt
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bs
